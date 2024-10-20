@@ -1,0 +1,311 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    user-select: none;
+    /* Отключить выделение текста для всего документа */
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    background-color: #f5ebdb;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.container {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.game,
+.hints,
+.menu {
+    /* flex: 1 1 100%; */
+    margin: 5px;
+}
+
+.game,
+.hints,
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.menu {
+    max-width: 720px;
+}
+
+.hints {
+    max-width: 500px;
+    background-color: #f9efdf;
+    height: 100%;
+}
+
+.game,
+.select-hints {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hints {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    min-height: 585px;
+}
+
+.played-hints {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 50px;
+    align-items: center;
+    align-content: center;
+    justify-content: space-evenly;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    min-height: 250px;
+    background-color: #fff;
+}
+
+.card-for-chuse {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.select-hints {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    text-align: center;
+}
+
+p {
+    margin-bottom: 5px;
+}
+
+.card-grid,
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.card-grid {
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.card,
+.hint-card,
+.chuse-card,
+.deck {
+    transition: all 0.3s ease;
+    background-color: #004d47;
+    height: 141.84px;
+    width: 92.16px;
+    border-radius: 7px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    margin: 2px;
+    background-size: cover;
+    border: 3px solid #ffffff;
+    z-index: auto;
+}
+
+.deck:hover {
+    z-index: 20;
+    transform: scale(1.02);
+    /* Увеличение карты при наведении */
+    box-shadow: 0 0 20px #e3943f;
+    /* Подсветка */
+}
+
+/* Стили для каждой карточки */
+.card {
+    padding-top: 100%;
+    /* Сохраняем соотношение сторон 1:1 */
+    position: relative;
+    /* Для корректной работы фона */
+    background-color: #f0f0f0;
+    /* Цвет фона до загрузки изображений */
+    background-size: cover;
+    /* Покрытие фона */
+    background-position: center;
+    /* Центрирование фона */
+    border-radius: 8px;
+}
+
+.card.selected {
+    box-shadow: 0 0 5px rgb(83, 83, 10, 0.4);
+    transform: scale(1.02);
+    border: 3px solid rgb(197, 1, 1);
+}
+
+.chuse-card.selected {
+    box-shadow: 0 0 10px rgba(10, 10, 8, 0.5);
+    transform: scale(1.15);
+    border: 4px solid #ff8a2b;
+}
+
+.deleted {
+    opacity: 0.5;
+}
+
+.deck {
+    height: 34vh;
+    width: 23vh;
+}
+
+.hint-card.selected {
+    border: 2px solid yellow;
+}
+
+.btn-confirm,
+.btn {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;    
+    margin-bottom: 10px;
+    padding: 17px 50px;
+    /* Внутренние отступы */
+    background-color: #df6601;
+    /* Цвет фона кнопки */
+    color: white;
+    /* Цвет текста кнопки */
+    border: none;
+    /* Убираем рамку */
+    border-radius: 12px;
+    /* Закругляем углы */
+    cursor: pointer;
+    /* Курсор при наведении */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* Тень кнопки */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    /* Плавный переход */
+}
+
+.btn-confirm.chuse {
+    margin-top: 0;
+    /* Убираем верхний отступ для кнопки с классом chuse */
+}
+
+.btn-confirm:hover,
+.btn:hover {
+    background-color: #ff8a2b;
+    /* Цвет фона при наведении */
+}
+
+/* Эффект нажатия */
+.deck:active,
+.card:active,
+.btn-confirm:active,
+.btn:active {
+    transform: scale(0.95);
+    /* Уменьшаем размер кнопки, создавая эффект погружения */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    /* Уменьшаем тень */
+}
+
+.deack {
+    background-size: cover;
+}
+
+/* Адаптация для телефонов */
+@media (max-width: 900px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu {
+        max-width: 500px;
+    }
+
+    .hints {
+        max-width: 410px
+    }
+
+    .played-hints {
+        padding: 1px;
+        width: 95%;
+    }
+
+    .select-hints {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: center;
+        justify-content: space-evenly;
+        padding: 5px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .container-btn-cancel,
+    .container-btn-confirm {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(157 207 206);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.table-loading{
+    margin-bottom: 10px;
+}
+
+.container-table {
+    display: flex;
+    flex-direction: column;
+    background-color: #f5ebdb;
+    justify-content: center;
+    border-radius: 5px;
+    padding: 20px 50px;
+    box-shadow: 0 2px 10px #0000001a;
+}
+
+.hidden {
+    display: none !important;
+}

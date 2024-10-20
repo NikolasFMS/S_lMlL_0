@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Подключение шрифтов -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.json">
+  <title>SIMILO</title>
+  <!-- Подключение стилей -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Основной контейнер с меню выбора колод -->
+  <div class="container 0">
+    <div class="menu">
+      <p id="text-chuse-deck"> </p>
+      <div class="menu-grid" id="deckContainer">
+        <!-- Сетка с выбором колод (10 карт) -->
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Оверлей для отображения полноразмерного изображения -->
+  <div id="overlay" class="hidden">
+    <img id="fullImage" src="" alt="Full View" />
+  </div>
+
+  <!-- Основной контейнер для игры -->
+  <div class="container 1" style="display: none">
+    <div class="game">
+      <h3 id="round"> </h3>
+      <p id="text-for-players"> </p>
+      <div class="card-grid" id="gameCardsContainer">
+        <!-- Сетка карт для игрового процесса (12 карт) -->
+
+      </div>
+      <!-- Canvas для возможных визуальных эффектов (например, анимаций) -->
+      <canvas id="canvas" style="display: none;"></canvas>
+
+      <!-- Кнопки для подтверждения и перехода к следующему ходу -->
+      <button class="btn-confirm ok hidden" onclick="okPlayerCard()">ПОДВЕРДИТЕ</button>
+      <button class="btn-confirm nextTurne hidden" onclick="okPlayerCard()">Далее</button>
+    </div>
+
+    <!-- Раздел для подсказок -->
+    <div class="hints" onclick="scrollToDown()">
+      <p>Разыгранные подсказки</p>
+      <div class="played-hints">
+        <!-- Карты-подсказки (5 карт) -->
+        <div class="hint-card hidden"></div>
+        <div class="hint-card hidden"></div>
+        <div class="hint-card hidden"></div>
+        <div class="hint-card hidden"></div>
+        <div class="hint-card hidden"></div>
+      </div>
+
+      <!-- Карты для выбора подсказок -->
+      <div class="card-for-chuse">
+        <p>Выберите карту в качестве подсказки</p>
+        <div class="select-hints" id="hintsContainer">
+
+        </div>
+      </div>
+
+      <!-- Кнопки для подтверждения выбора подсказки -->
+      <div class="container-btn-confirm hidden">
+        <button class="btn-confirm chuse" onclick="showHintsCard(0)">ПОХОЖ</button>
+        <button class="btn-confirm chuse" onclick="showHintsCard(90)">ОТЛИЧАЕТСЯ</button>
+      </div>
+
+      <!-- Кнопки для отмены выбора подсказки -->
+      <div class="container-btn-cancel hidden">
+        <button class="btn-confirm yes" onclick="yesHints(0)">ПОДВЕРДИТЬ</button>
+        <button class="btn-confirm cancel" onclick="cancelHints()">ОТМЕНИТЬ</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Оверлей загрузки игры -->
+  <div class="overlay load">
+    <div class="container-table">
+      <h3 class="table-loading"> Загрузка... </h3>
+      <button class="btn end hidden" onclick="NextTurnTable()"> СТАРТ </button>
+    </div>
+  </div>
+
+  <!-- Оверлей меню выбора колоды -->
+  <div class="overlay menu-overlay hidden">
+    <div class="container-table">
+      <h3 class="table-text menu "> Колода для игроков </h3>
+      <button class="btn menu end " onclick="MenuOverlay()"> ВЫБРАТЬ </button>
+    </div>
+  </div>
+  <!-- Подключение скриптов -->
+  <script src="script.js"></script>
+</body>
+
+</html>
