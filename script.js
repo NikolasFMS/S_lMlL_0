@@ -561,7 +561,7 @@ async function okPlayerCard() {
         }
     }
 
-    if (round === 5) {
+    if (round === 5 && luse !== true) {
         win = true;
         console.log('Игроки победили: win === ', win);
     }
