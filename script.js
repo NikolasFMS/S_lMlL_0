@@ -582,7 +582,9 @@ function showHintsCard(direction) {
     chuseHint = true;
 
     const cards = document.querySelectorAll('.chuse-card');
+    const hintCardsContainers = document.querySelectorAll('.container-hint-card');
     const hintCards = document.querySelectorAll('.hint-card');
+    const textHintCards = document.querySelectorAll('.text-hint-card');
     const confirmButton = document.querySelector('.container-btn-confirm');
     const buttonClose = document.querySelector('.container-btn-cancel');
 
@@ -602,10 +604,12 @@ function showHintsCard(direction) {
     const hintIndex = openedHints.length - 1; // Индекс текущей подсказки
     const cardIndex = openedHints[hintIndex]; // Индекс выбранной карты
 
+    const containerHintCard = hintCardsContainers[hintIndex];
     const hintCard = hintCards[hintIndex]; // Получаем hintCard по индексу
+    const textHintCard = textHintCards[hintIndex];
 
     // Применяем стили к hintCard
-    hintCard.classList.remove('hidden'); // Делаем подсказку видимой
+    containerHintCard.classList.remove('hidden'); // Делаем подсказку видимой
 
     Object.assign(hintCard.style, {
         'background-image': cards[cardIndex].style.backgroundImage || '',
@@ -613,6 +617,14 @@ function showHintsCard(direction) {
         'background-size': cards[cardIndex].style.backgroundSize || 'cover',
         'transform': `rotate(${direction}deg)` // Поворот в зависимости от направления
     });
+
+    if (direction === 0) {
+        textHintCard.classList.add('similo');
+        textHintCard.textContent = "Есть что-то общее."
+    } else {
+        textHintCard.classList.remove('similo');
+        textHintCard.textContent = "Чем-то отличается."
+    }
 
     scrollToDown();
 }
@@ -624,6 +636,7 @@ function cancelHints() {
     chuseHint = false;
     // Получаем элементы карт и подсказок
     const cards = document.querySelectorAll('.chuse-card');
+    const hintCardsContainers = document.querySelectorAll('.container-hint-card');
     const hintCards = document.querySelectorAll('.hint-card');
     const confirmButton = document.querySelector('.container-btn-confirm');
     const buttonClose = document.querySelector('.container-btn-cancel');
@@ -638,7 +651,7 @@ function cancelHints() {
     // Проверяем, если есть хотя бы одна открытая подсказка
     if (lastHintIndex >= 0) {
         // Скрываем последнюю подсказку
-        const hintCard = hintCards[lastHintIndex];
+        const hintCard = hintCardsContainers[lastHintIndex];
         hintCard.classList.add('hidden');
 
         // Удаляем индекс карты из массива открытых подсказок
